@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_tmdb/presentation/favorite_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/home_widget.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
 import 'package:movie_app_tmdb/view_model/movie_provider.dart';
@@ -23,12 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: movieProvider.dataList.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator.adaptive(),
-            )
-          // final data = movieProvider.dataList[0].results[index];
-          : HomeWidget(),
+      body: Consumer<HomeProvider>(
+        builder: ((context, value, child) {
+          return movieProvider.dataList.isEmpty
+              ? const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                )
+              : IndexedStack(
+                  index: value.currentIndex,
+                  children: [HomeWidget(), FavoriteScreen()],
+                );
+        }),
+      ),
     );
   }
 
