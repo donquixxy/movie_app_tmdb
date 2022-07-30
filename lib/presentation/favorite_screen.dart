@@ -5,8 +5,6 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("ASD"),
-    );
+    return const Text('ads');
   }
 }

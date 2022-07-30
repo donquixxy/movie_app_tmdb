@@ -23,6 +23,8 @@ class ApiProvider {
     } on Exception {
       // print(error.toString());
       return null;
+    } catch (error) {
+      return null;
     }
   }
 }
