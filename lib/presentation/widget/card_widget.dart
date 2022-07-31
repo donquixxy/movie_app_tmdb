@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_app_tmdb/models/result_object.dart';
+import 'package:movie_app_tmdb/router/router_name.dart' as route;
 
 class CardWidget extends StatelessWidget {
   final Results models;
@@ -12,7 +13,9 @@ class CardWidget extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return GestureDetector(
-      onTap: () => print('object1'),
+      onTap: () {
+        Navigator.of(context).pushNamed(route.detailRoute);
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Column(

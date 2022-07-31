@@ -26,9 +26,9 @@ class HomeWidget extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: movieProvider.dataList[0].results.length,
+              itemCount: movieProvider.movieModels!.results.length,
               itemBuilder: (BuildContext context, int index) {
-                final data = movieProvider.dataList[0].results[index];
+                final data = movieProvider.movieModels!.results[index];
                 return CardWidget(data);
               },
             ),
@@ -46,9 +46,9 @@ class HomeWidget extends StatelessWidget {
               reverse: true,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: movieProvider.dataList[0].results.length,
+              itemCount: movieProvider.movieModels!.results.length,
               itemBuilder: (BuildContext context, int index) {
-                final data = movieProvider.dataList[0].results[index];
+                final data = movieProvider.movieModels!.results[index];
                 return CardWidget(data);
               },
             ),

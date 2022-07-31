@@ -24,18 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: Consumer<HomeProvider>(
-        builder: ((context, value, child) {
-          return movieProvider.dataList.isEmpty
-              ? const Center(
-                  child: CircularProgressIndicator.adaptive(),
-                )
-              : IndexedStack(
-                  index: value.currentIndex,
+      body: movieProvider.movieModels == null
+          ? const Center(
+              child: CircularProgressIndicator.adaptive(),
+            )
+          : Consumer<MovieProvider>(
+              builder: ((context, value, child) {
+                return IndexedStack(
+                  index: homeProvider.currentIndex,
                   children: [HomeWidget(), FavoriteScreen()],
                 );
-        }),
-      ),
+              }),
+            ),
     );
   }
 
