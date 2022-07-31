@@ -6,8 +6,8 @@ part 'movie_models.g.dart';
 
 @JsonSerializable()
 class MovieModels {
-  final int page;
-  final List<Results> results;
+  int page;
+  List<Results> results;
 
   MovieModels({required this.page, required this.results});
 

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/widget/card_widget.dart';
 import 'package:movie_app_tmdb/view_model/movie_provider.dart';
 import 'package:provider/provider.dart';
@@ -14,25 +16,25 @@ class HomeWidget extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Popular Movies',
-              style: TextStyle(fontSize: 24),
-            ),
-          ),
-          SizedBox(
-            height: height * 0.41,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: movieProvider.movieModels!.results.length,
-              itemBuilder: (BuildContext context, int index) {
-                final data = movieProvider.movieModels!.results[index];
-                return CardWidget(data);
-              },
-            ),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.all(8.0),
+          //   child: Text(
+          //     'Popular Movies',
+          //     style: TextStyle(fontSize: 24),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: height * 0.41,
+          //   child: ListView.builder(
+          //     scrollDirection: Axis.horizontal,
+          //     physics: const BouncingScrollPhysics(),
+          //     itemCount: movieProvider.movieModels!.results.length,
+          //     itemBuilder: (BuildContext context, int index) {
+          //       final data = movieProvider.movieModels!.results[index];
+          //       return CardWidget(data);
+          //     },
+          //   ),
+          // ),
           const Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(
@@ -43,13 +45,15 @@ class HomeWidget extends StatelessWidget {
           SizedBox(
             height: height * 0.41,
             child: ListView.builder(
-              reverse: true,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: movieProvider.movieModels!.results.length,
               itemBuilder: (BuildContext context, int index) {
                 final data = movieProvider.movieModels!.results[index];
-                return CardWidget(data);
+                return ChangeNotifierProvider.value(
+                  value: data,
+                  child: CardWidget(),
+                );
               },
             ),
           ),

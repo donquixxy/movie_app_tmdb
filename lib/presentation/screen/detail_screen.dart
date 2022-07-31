@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_tmdb/presentation/widget/stack_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   @override
@@ -9,7 +8,7 @@ class DetailScreen extends StatelessWidget {
         title: const Text("Details"),
       ),
       body: ListView(
-        children: [],
+        children: const [],
       ),
     );
   }

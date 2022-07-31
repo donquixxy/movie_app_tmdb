@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: movieProvider.movieModels == null
+      body: movieProvider.results.isEmpty
           ? const Center(
               child: CircularProgressIndicator.adaptive(),
             )
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: ((context, value, child) {
                 return IndexedStack(
                   index: homeProvider.currentIndex,
-                  children: [HomeWidget(), FavoriteScreen()],
+                  children: [HomeWidget(), const FavoriteScreen()],
                 );
               }),
             ),

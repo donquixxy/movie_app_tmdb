@@ -1,24 +1,25 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'result_object.g.dart';
 
 @JsonSerializable()
-class Results {
-  final bool adult;
-  final String backdrop_path;
-  final List<int> genre_ids;
-  final int id;
-  final String original_language;
-  final String original_title;
-  final String overview;
-  final double popularity;
-  final String poster_path;
-  final String release_date;
-  final String title;
-  final bool video;
-  final double vote_average;
-  final int vote_count;
+class Results extends ChangeNotifier {
+  bool adult;
+  String backdrop_path;
+  List<int> genre_ids;
+  int id;
+  String original_language;
+  String original_title;
+  String overview;
+  double popularity;
+  String poster_path;
+  String release_date;
+  String title;
+  bool video;
+  double vote_average;
+  int vote_count;
 
   Results(
       {required this.adult,
