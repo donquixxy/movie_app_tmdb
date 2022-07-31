@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_tmdb/presentation/home_screen.dart';
+import 'package:movie_app_tmdb/presentation/screen/home_screen.dart';
 import 'package:movie_app_tmdb/router/router_config.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
 import 'package:movie_app_tmdb/view_model/movie_provider.dart';
