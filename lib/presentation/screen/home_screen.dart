@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/presentation/screen/favorite_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/home_widget.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
-import 'package:movie_app_tmdb/view_model/movie_provider.dart';
+import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,8 +13,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final movieProvider = Provider.of<MovieProvider>(context);
     final homeProvider = Provider.of<HomeProvider>(context);
+    final itemProvider = Provider.of<ResultProvider>(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
@@ -24,14 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: movieProvider.results.isEmpty
+      body: itemProvider.listData.isEmpty
           ? const Center(
               child: CircularProgressIndicator.adaptive(),
             )
-          : Consumer<MovieProvider>(
+          : Consumer<HomeProvider>(
               builder: ((context, value, child) {
                 return IndexedStack(
-                  index: homeProvider.currentIndex,
+                  index: value.currentIndex,
                   children: [HomeWidget(), const FavoriteScreen()],
                 );
               }),
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    context.read<MovieProvider>().fetchPopularMovie();
+    context.read<ResultProvider>().fetchAllMovie();
     super.initState();
   }
 }
