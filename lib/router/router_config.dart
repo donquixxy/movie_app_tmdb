@@ -6,12 +6,15 @@ import 'router_name.dart' as route;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case route.homeRoute:
-      return MaterialPageRoute(builder: (context) => HomeScreen());
+      return MaterialPageRoute(
+          builder: (context) => HomeScreen(), settings: settings);
     case route.detailRoute:
-      return MaterialPageRoute(builder: (context) => DetailScreen());
+      return MaterialPageRoute(
+          builder: (context) => DetailScreen(settings.arguments as int),
+          settings: settings);
     default:
       return MaterialPageRoute(
-        builder: (context) => const Scaffold(
+        builder: (_) => const Scaffold(
           body: Center(
             child: Text("NO ROUTE FOUND"),
           ),

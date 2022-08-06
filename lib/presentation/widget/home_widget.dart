@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app_tmdb/get_locator.dart';
-import 'package:movie_app_tmdb/presentation/screen/detail_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/card_widget.dart';
-import 'package:movie_app_tmdb/router/navigation_service.dart';
-import 'package:movie_app_tmdb/router/router_name.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -36,12 +32,7 @@ class HomeWidget extends StatelessWidget {
                 final data = itemProvider.listData[index];
                 return ChangeNotifierProvider.value(
                   value: data,
-                  builder: (context, data) => GestureDetector(
-                      onTap: () {
-                        getInstance<NavigationService>()
-                            .navigateTo(detailRoute);
-                      },
-                      child: CardWidget()),
+                  child: CardWidget(),
                 );
               },
             ),

@@ -21,4 +21,9 @@ class ResultProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Results getDataById(int id) {
+    var result = _listResults.firstWhere((element) => element.id == id);
+    return result;
+  }
 }

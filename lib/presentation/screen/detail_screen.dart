@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
+  final int idArguments;
+  DetailScreen(this.idArguments);
   @override
   Widget build(BuildContext context) {
-    var data = Provider.of<ResultProvider>(context, listen: false);
-    // var data2 = Provider.of<Results>(context, listen: false);
-
-    // print(Provider.of<Results>(context));
+    var data = Provider.of<ResultProvider>(context, listen: false)
+        .getDataById(idArguments);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Details"),
@@ -20,7 +19,7 @@ class DetailScreen extends StatelessWidget {
               onPressed: () {
                 print(data);
               },
-              child: const Text("OK"))
+              child: Text(data.id.toString()))
         ],
       ),
     );
