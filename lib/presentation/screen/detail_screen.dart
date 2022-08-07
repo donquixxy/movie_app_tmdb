@@ -12,10 +12,6 @@ class DetailScreen extends StatelessWidget {
     var data = Provider.of<ResultProvider>(context, listen: false)
         .getDataById(idArguments);
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text("Details"),
-      ),
       body: ChangeNotifierProvider.value(
         value: data,
         child: StackWidget(),

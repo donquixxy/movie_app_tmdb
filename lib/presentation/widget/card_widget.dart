@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app_tmdb/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_app_tmdb/get_locator.dart';
@@ -46,7 +47,11 @@ class CardWidget extends StatelessWidget {
               item.title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 18),
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.roboto().fontFamily),
             ),
           )
         ],

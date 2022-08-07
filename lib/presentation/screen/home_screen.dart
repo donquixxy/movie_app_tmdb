@@ -22,8 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: homeProvider.changeCurrentIndex,
         items: homeProvider.bottomItem,
       ),
-      backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: itemProvider.listData.isEmpty
           ? const Center(
               child: CircularProgressIndicator.adaptive(),
