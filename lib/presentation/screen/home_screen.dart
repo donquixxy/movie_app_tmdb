@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/screen/favorite_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/home_widget.dart';
+import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     final itemProvider = Provider.of<ResultProvider>(context);
+    final favoriteProvier = context.watch<FavoriteProvider>();
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          var box = Hive.box<Results>('favorites');
+          print(box.getAt(0));
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         currentIndex: homeProvider.currentIndex,

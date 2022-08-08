@@ -23,7 +23,7 @@ class BottomDetailsWidget extends StatelessWidget {
           ),
           Text(
             itemProvider.overview,
-            style: TextStyle(fontSize: 18, color: Colors.white),
+            style: const TextStyle(fontSize: 18, color: Colors.white),
           )
         ],
       ),

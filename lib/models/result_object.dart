@@ -1,25 +1,55 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'result_object.g.dart';
 
+@HiveType(typeId: 1)
 @JsonSerializable()
-class Results extends ChangeNotifier {
-  bool adult;
-  String backdrop_path;
-  List<int> genre_ids;
-  int id;
-  String original_language;
-  String original_title;
-  String overview;
-  double popularity;
-  String poster_path;
-  String release_date;
-  String title;
-  bool video;
-  double vote_average;
-  int vote_count;
+class Results extends Equatable with ChangeNotifier {
+  @HiveField(0)
+  final bool adult;
+
+  @HiveField(1)
+  final String backdrop_path;
+
+  @HiveField(2)
+  final List<int> genre_ids;
+
+  @HiveField(3)
+  final int id;
+
+  @HiveField(4)
+  final String original_language;
+
+  @HiveField(5)
+  final String original_title;
+
+  @HiveField(6)
+  final String overview;
+
+  @HiveField(7)
+  final double popularity;
+
+  @HiveField(8)
+  final String poster_path;
+
+  @HiveField(9)
+  final String release_date;
+
+  @HiveField(10)
+  final String title;
+
+  @HiveField(11)
+  final bool video;
+
+  @HiveField(12)
+  final double vote_average;
+
+  @HiveField(13)
+  final int vote_count;
 
   Results(
       {required this.adult,
@@ -39,4 +69,22 @@ class Results extends ChangeNotifier {
 
   factory Results.fromJson(Map<String, dynamic> json) =>
       _$ResultsFromJson(json);
+
+  @override
+  List<Object?> get props => [
+        adult,
+        backdrop_path,
+        genre_ids,
+        id,
+        original_language,
+        original_title,
+        overview,
+        popularity,
+        poster_path,
+        release_date,
+        title,
+        video,
+        vote_average,
+        vote_count
+      ];
 }

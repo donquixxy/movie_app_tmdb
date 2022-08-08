@@ -7,28 +7,35 @@ import 'package:movie_app_tmdb/get_locator.dart';
 import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/widget/bottom_details_widget.dart';
 import 'package:movie_app_tmdb/router/navigation_service.dart';
+import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
 class StackWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var heightScreen = MediaQuery.of(context).size.height;
-    var widthScreen = MediaQuery.of(context).size.width;
-    final itemProvider = Provider.of<Results>(context);
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthScreen = MediaQuery.of(context).size.width;
+    final itemProvider = Provider.of<Results>(context, listen: false);
+    final favoriteProvier = context.watch<FavoriteProvider>();
     return SafeArea(
       child: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           Stack(
             children: [
               ImageFiltered(
                 imageFilter: ImageFilter.blur(sigmaX: 3),
-                child: CachedNetworkImage(
-                  imageUrl: posterPath + itemProvider.backdrop_path,
-                  fit: BoxFit.fill,
-                  height: heightScreen * 0.5,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8)),
+                  child: CachedNetworkImage(
+                    imageUrl: posterPath + itemProvider.backdrop_path,
+                    fit: BoxFit.fill,
+                    height: heightScreen * 0.5,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                  ),
                 ),
               ),
               Container(
@@ -95,8 +102,11 @@ class StackWidget extends StatelessWidget {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   shape: const StadiumBorder(),
-                                  primary: Color.fromARGB(255, 0, 204, 113)),
-                              onPressed: () {},
+                                  primary:
+                                      const Color.fromARGB(255, 0, 204, 113)),
+                              onPressed: () {
+                                favoriteProvier.addToFavoriteBox(itemProvider);
+                              },
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,

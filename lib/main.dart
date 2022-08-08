@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app_tmdb/get_locator.dart';
+import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/screen/home_screen.dart';
 import 'package:movie_app_tmdb/router/navigation_service.dart';
 import 'package:movie_app_tmdb/router/router_config.dart';
+import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetLocator();
+  await Hive.initFlutter();
+  await Hive.openBox<Results>('favorites');
+  Hive.registerAdapter(ResultsAdapter());
   runApp(
     MultiProvider(
       providers: [
@@ -19,6 +25,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => ResultProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FavoriteProvider(),
         )
       ],
       child: MyApp(),
