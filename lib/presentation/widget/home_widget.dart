@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/presentation/widget/card_widget.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
@@ -17,7 +16,7 @@ class HomeWidget extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+            children: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
           ),
           const Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
