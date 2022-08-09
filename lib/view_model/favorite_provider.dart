@@ -25,11 +25,11 @@ class FavoriteProvider extends ChangeNotifier {
   ValueListenable<Box<Results>> get fetchDataFromDb =>
       Hive.box<Results>('favorites').listenable();
 
-  compareObject(Results data) {
-    // print(_favorite.contains(data));
-    print("SPACE");
-    print(hiveBox.values.toList().contains(data));
-  }
+  // compareObject(Results data) {
+  //   // print(_favorite.contains(data));
+  //   print("SPACE");
+  //   print(hiveBox.values.toList().contains(data));
+  // }
 
   void removeDataFromHive(int index) {
     hiveBox.deleteAt(index);

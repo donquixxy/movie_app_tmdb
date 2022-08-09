@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 class BottomDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var heightScreen = MediaQuery.of(context).size.height;
     var widthScreen = MediaQuery.of(context).size.width;
     var itemProvider = Provider.of<Results>(context, listen: false);
     return Container(

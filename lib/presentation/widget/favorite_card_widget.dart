@@ -1,22 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/constants.dart';
-import 'package:movie_app_tmdb/get_locator.dart';
 import 'package:movie_app_tmdb/models/result_object.dart';
-import 'package:movie_app_tmdb/router/navigation_service.dart';
-import 'package:movie_app_tmdb/router/router_name.dart';
-import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
 class FavoriteCard extends StatelessWidget {
   final int index;
-  FavoriteCard(this.index);
+  const FavoriteCard(this.index);
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final itemProvider = context.read<Results>();
-    final favoriteProvider = context.read<FavoriteProvider>();
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),

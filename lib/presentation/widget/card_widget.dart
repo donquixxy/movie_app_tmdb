@@ -6,17 +6,15 @@ import 'package:movie_app_tmdb/get_locator.dart';
 import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/router/navigation_service.dart';
 import 'package:movie_app_tmdb/router/router_name.dart' as route;
-import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
 class CardWidget extends StatelessWidget {
   final int index;
-  CardWidget(this.index);
+  const CardWidget(this.index);
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     var item = Provider.of<Results>(context, listen: false);
-    final favoriteProvier = context.watch<FavoriteProvider>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -26,7 +24,7 @@ class CardWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              favoriteProvier.compareObject(item);
+              // favoriteProvier.compareObject(item);
               getInstance<NavigationService>()
                   .navigateTo(route.detailRoute, arguments: index);
             },
