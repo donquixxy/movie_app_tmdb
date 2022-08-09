@@ -23,7 +23,7 @@ class HomeWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Popular TV Series',
+                    'Popular Movie ',
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

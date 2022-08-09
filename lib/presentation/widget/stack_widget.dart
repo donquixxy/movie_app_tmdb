@@ -145,7 +145,7 @@ class StackWidget extends StatelessWidget {
                     imageUrl: posterPath + itemProvider.poster_path,
                     fit: BoxFit.cover,
                     placeholder: (context, url) =>
-                        const CircularProgressIndicator()),
+                        const Center(child: CircularProgressIndicator())),
               ),
               Positioned(
                 top: heightScreen * 0.3,
