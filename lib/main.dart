@@ -14,9 +14,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetLocator();
+  Hive.registerAdapter(ResultsAdapter());
   await Hive.initFlutter();
   await Hive.openBox<Results>('favorites');
-  Hive.registerAdapter(ResultsAdapter());
   runApp(
     MultiProvider(
       providers: [
@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.roboto().fontFamily,
         canvasColor: const Color.fromARGB(255, 14, 31, 48),

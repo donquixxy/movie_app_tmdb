@@ -14,10 +14,6 @@ class HomeWidget extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
-          ),
           const Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(

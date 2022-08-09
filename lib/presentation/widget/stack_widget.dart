@@ -34,13 +34,15 @@ class StackWidget extends StatelessWidget {
                     fit: BoxFit.fill,
                     height: heightScreen * 0.5,
                     placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
+                        const CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
                   ),
                 ),
               ),
               Container(
                 padding: const EdgeInsets.all(18),
-                height: heightScreen * 0.38,
+                height: heightScreen * 0.32,
                 width: double.infinity,
                 margin: EdgeInsets.only(top: heightScreen * 0.30),
                 child: Card(
@@ -48,9 +50,11 @@ class StackWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      //SPACING ATAS TITLE
                       const SizedBox(
                         height: 20,
                       ),
+                      //CONTENT
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,6 +76,7 @@ class StackWidget extends StatelessWidget {
                           ),
                         ],
                       ),
+
                       Row(
                         children: [
                           SizedBox(
@@ -87,9 +92,11 @@ class StackWidget extends StatelessWidget {
                           ),
                         ],
                       ),
+                      //SPACING ANTAR BUTTON DAN TITLE
                       const SizedBox(
-                        height: 50,
+                        height: 30,
                       ),
+                      //END OF CONTENT
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -131,7 +138,7 @@ class StackWidget extends StatelessWidget {
               ),
               Positioned(
                 left: widthScreen * 0.10,
-                bottom: heightScreen * 0.12,
+                bottom: heightScreen * 0.1,
                 child: CachedNetworkImage(
                     height: 200,
                     imageUrl: posterPath + itemProvider.poster_path,

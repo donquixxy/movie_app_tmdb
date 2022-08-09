@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:movie_app_tmdb/models/result_object.dart';
+import 'package:movie_app_tmdb/presentation/widget/favorite_card_widget.dart';
+import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return const Text('ads');
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+
+    return ValueListenableBuilder(
+        valueListenable: favoriteProvider.fetchDataFromDb,
+        builder: (BuildContext context, Box<Results> box, widget) {
+          return ListView.builder(
+            padding: const EdgeInsets.all(12),
+            itemCount: box.values.length,
+            itemBuilder: (BuildContext context, int index) {
+              var data = box.values.toList()[index];
+              return ChangeNotifierProvider.value(
+                value: data,
+                child: FavoriteCard(),
+              );
+            },
+          );
+        });
   }
 }

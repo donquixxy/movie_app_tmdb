@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:movie_app_tmdb/get_locator.dart';
@@ -6,11 +7,11 @@ import 'package:movie_app_tmdb/router/navigation_service.dart';
 
 class FavoriteProvider extends ChangeNotifier {
   final hiveBox = Hive.box<Results>('favorites');
-  final List<Results> _favorite = [];
-
-  List<Results> get listFavorite => _favorite;
 
   void addToFavoriteBox(Results data) {
+    if (!hiveBox.values.contains(data)) {
+      hiveBox.add(data);
+    }
     ScaffoldMessenger.of(
             getInstance<NavigationService>().navigatorKey.currentContext!)
         .showSnackBar(
@@ -18,14 +19,15 @@ class FavoriteProvider extends ChangeNotifier {
         content: Text("Succes add to favorite"),
       ),
     );
-    hiveBox.add(data);
-    if (!_favorite.contains(data)) {
-      _favorite.add(data);
-    }
     notifyListeners();
   }
 
+  ValueListenable<Box<Results>> get fetchDataFromDb =>
+      Hive.box<Results>('favorites').listenable();
+
   compareObject(Results data) {
-    print(_favorite.contains(data));
+    // print(_favorite.contains(data));
+    print("SPACE");
+    print(hiveBox.values.toList().contains(data));
   }
 }
