@@ -18,7 +18,7 @@ class HomeWidget extends StatelessWidget {
         scrollDirection: Axis.vertical,
         children: [
           Padding(
-              padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -34,7 +34,7 @@ class HomeWidget extends StatelessWidget {
                       getInstance<NavigationService>()
                           .navigateTo(paginationRoute);
                     },
-                    child: Text("See all"),
+                    child: const Text("See all"),
                   )
                 ],
               )),
@@ -43,7 +43,7 @@ class HomeWidget extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: itemProvider.listData.length,
+              itemCount: itemProvider.listData.take(5).length,
               itemBuilder: (BuildContext context, int index) {
                 final data = itemProvider.listData[index];
                 return ChangeNotifierProvider.value(

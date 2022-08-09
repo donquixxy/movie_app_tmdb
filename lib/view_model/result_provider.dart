@@ -46,7 +46,7 @@ class ResultProvider extends ChangeNotifier {
       notifyListeners();
       return _listResults;
     } catch (error) {
-      print(error.toString());
+      // print(error.toString());
       return null;
     }
   }

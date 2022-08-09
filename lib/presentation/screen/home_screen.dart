@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/screen/favorite_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/home_widget.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';

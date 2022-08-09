@@ -24,7 +24,6 @@ class ApiProvider {
       // print(error.toString());
       return null;
     } catch (error) {
-      print(error.toString());
       return null;
     }
   }
@@ -43,9 +42,8 @@ class ApiProvider {
 
       MovieModels movieModels = MovieModels.fromJson(response.data);
       return movieModels;
-    } on DioError catch (error) {
-      print(error.message);
-      return null;
+    } catch (error) {
+      throw error.toString();
     }
   }
 }

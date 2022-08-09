@@ -17,7 +17,7 @@ class FavoriteScreen extends StatelessWidget {
         valueListenable: favoriteProvider.fetchDataFromDb,
         builder: (BuildContext context, Box<Results> box, widget) {
           return ListView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.all(12),
             itemCount: box.values.length,
             itemBuilder: (BuildContext context, int index) {

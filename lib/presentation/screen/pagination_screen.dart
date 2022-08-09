@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/get_locator.dart';
-import 'package:movie_app_tmdb/models/movie_models.dart';
-import 'package:movie_app_tmdb/presentation/widget/card_widget.dart';
 import 'package:movie_app_tmdb/presentation/widget/favorite_card_widget.dart';
 import 'package:movie_app_tmdb/router/navigation_service.dart';
 import 'package:movie_app_tmdb/router/router_name.dart';
@@ -23,16 +21,9 @@ class _PaginationScreenState extends State<PaginationScreen> {
     return Scaffold(
       body: SafeArea(
         child: itemProvider.listData.isEmpty
-            ? Center(
-                child: TextButton(
-                  onPressed: () {
-                    print(itemProvider.listData.length);
-                  },
-                  child: Text("ASD"),
-                ),
-              )
+            ? const Center(child: CircularProgressIndicator.adaptive())
             : ListView.builder(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 controller: scrollController,
                 itemCount: itemProvider.listData.length,
                 itemBuilder: (BuildContext context, int index) {
