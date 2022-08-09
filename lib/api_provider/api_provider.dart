@@ -24,6 +24,27 @@ class ApiProvider {
       // print(error.toString());
       return null;
     } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
+
+  Future<MovieModels?> paginationFetchData([int page = 1]) async {
+    try {
+      Response response = await _dio.get(baseUrl, queryParameters: {
+        'api_key': baseKey,
+        'language': language,
+        'page': page
+      });
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to fetch Data');
+      }
+
+      MovieModels movieModels = MovieModels.fromJson(response.data);
+      return movieModels;
+    } on DioError catch (error) {
+      print(error.message);
       return null;
     }
   }

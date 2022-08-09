@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     var item = Provider.of<Results>(context, listen: false);
     final favoriteProvier = context.watch<FavoriteProvider>();

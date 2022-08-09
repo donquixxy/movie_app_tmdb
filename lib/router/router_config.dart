@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/presentation/screen/detail_screen.dart';
 import 'package:movie_app_tmdb/presentation/screen/home_screen.dart';
+import 'package:movie_app_tmdb/presentation/screen/pagination_screen.dart';
 import 'router_name.dart' as route;
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -12,6 +13,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
           builder: (context) => DetailScreen(settings.arguments as int),
           settings: settings);
+    case route.paginationRoute:
+      return MaterialPageRoute(
+        builder: (context) => PaginationScreen(),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

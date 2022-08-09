@@ -30,4 +30,16 @@ class FavoriteProvider extends ChangeNotifier {
     print("SPACE");
     print(hiveBox.values.toList().contains(data));
   }
+
+  void removeDataFromHive(int index) {
+    hiveBox.deleteAt(index);
+    notifyListeners();
+    ScaffoldMessenger.of(
+            getInstance<NavigationService>().navigatorKey.currentContext!)
+        .showSnackBar(
+      const SnackBar(
+        content: Text("Deleted"),
+      ),
+    );
+  }
 }

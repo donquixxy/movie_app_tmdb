@@ -14,13 +14,14 @@ class FavoriteScreen extends StatelessWidget {
         valueListenable: favoriteProvider.fetchDataFromDb,
         builder: (BuildContext context, Box<Results> box, widget) {
           return ListView.builder(
+            physics: BouncingScrollPhysics(),
             padding: const EdgeInsets.all(12),
             itemCount: box.values.length,
             itemBuilder: (BuildContext context, int index) {
               var data = box.values.toList()[index];
               return ChangeNotifierProvider.value(
                 value: data,
-                child: FavoriteCard(),
+                child: FavoriteCard(index),
               );
             },
           );

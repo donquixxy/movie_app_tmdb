@@ -30,12 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          var box = Hive.box<Results>('favorites');
-          print(box.getAt(0));
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     var box = Hive.box<Results>('favorites');
+      //     box.values.forEach((element) {
+      //       print(element.title);
+      //     });
+      //   },
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         currentIndex: homeProvider.currentIndex,

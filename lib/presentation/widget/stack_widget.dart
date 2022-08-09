@@ -42,7 +42,7 @@ class StackWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(18),
-                height: heightScreen * 0.32,
+                height: heightScreen * 0.33,
                 width: double.infinity,
                 margin: EdgeInsets.only(top: heightScreen * 0.30),
                 child: Card(
@@ -94,7 +94,7 @@ class StackWidget extends StatelessWidget {
                       ),
                       //SPACING ANTAR BUTTON DAN TITLE
                       const SizedBox(
-                        height: 30,
+                        height: 40,
                       ),
                       //END OF CONTENT
                       Row(
