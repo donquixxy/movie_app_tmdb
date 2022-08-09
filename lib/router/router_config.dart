@@ -11,8 +11,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           builder: (context) => HomeScreen(), settings: settings);
     case route.detailRoute:
       return MaterialPageRoute(
-          builder: (context) => DetailScreen(settings.arguments as int),
-          settings: settings);
+        builder: (context) => DetailScreen(settings.arguments as int),
+      );
     case route.paginationRoute:
       return MaterialPageRoute(
         builder: (context) => PaginationScreen(),

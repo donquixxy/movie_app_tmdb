@@ -12,6 +12,7 @@ class ResultProvider extends ChangeNotifier {
   final List<Results> _listResults = [];
 
   List<Results> get listData => _listResults;
+  int pagePagination = 1;
 
   Future<void> fetchAllMovie() async {
     final result = await _apiProvider.getPopularMovie();
@@ -22,8 +23,31 @@ class ResultProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Results getDataById(int id) {
-    var result = _listResults.firstWhere((element) => element.id == id);
+  Results getDataById(int index) {
+    // var result = _listResults.firstWhere((element) => ele);
+    var result = _listResults.elementAt(index);
     return result;
+  }
+
+  Results getDataByIndex(int index) {
+    var value = _listResults.elementAt(index);
+    return value;
+  }
+
+  Future<List<Results>?> fetchSomeMoreData() async {
+    try {
+      var results = await _apiProvider.paginationFetchData(pagePagination);
+      for (var data in results!.results) {
+        if (!_listResults.contains(data)) {
+          _listResults.add(data);
+        }
+      }
+      pagePagination = pagePagination + 1;
+      notifyListeners();
+      return _listResults;
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
   }
 }

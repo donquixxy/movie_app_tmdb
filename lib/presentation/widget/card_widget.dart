@@ -10,6 +10,8 @@ import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
 class CardWidget extends StatelessWidget {
+  final int index;
+  CardWidget(this.index);
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -26,7 +28,7 @@ class CardWidget extends StatelessWidget {
             onTap: () {
               favoriteProvier.compareObject(item);
               getInstance<NavigationService>()
-                  .navigateTo(route.detailRoute, arguments: item.id);
+                  .navigateTo(route.detailRoute, arguments: index);
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),

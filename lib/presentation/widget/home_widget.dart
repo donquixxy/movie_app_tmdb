@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_tmdb/get_locator.dart';
 import 'package:movie_app_tmdb/presentation/widget/card_widget.dart';
+import 'package:movie_app_tmdb/router/navigation_service.dart';
+import 'package:movie_app_tmdb/router/router_name.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,16 +17,27 @@ class HomeWidget extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
-            child: Text(
-              'Popular TV Series',
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          ),
+          Padding(
+              padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Popular TV Series',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      getInstance<NavigationService>()
+                          .navigateTo(paginationRoute);
+                    },
+                    child: Text("See all"),
+                  )
+                ],
+              )),
           SizedBox(
             height: height * 0.41,
             child: ListView.builder(
@@ -34,7 +48,7 @@ class HomeWidget extends StatelessWidget {
                 final data = itemProvider.listData[index];
                 return ChangeNotifierProvider.value(
                   value: data,
-                  child: CardWidget(),
+                  child: CardWidget(index),
                 );
               },
             ),

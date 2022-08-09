@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:movie_app_tmdb/get_locator.dart';
 import 'package:movie_app_tmdb/models/result_object.dart';
 import 'package:movie_app_tmdb/presentation/widget/favorite_card_widget.dart';
+import 'package:movie_app_tmdb/router/navigation_service.dart';
+import 'package:movie_app_tmdb/router/router_name.dart';
 import 'package:movie_app_tmdb/view_model/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +24,12 @@ class FavoriteScreen extends StatelessWidget {
               var data = box.values.toList()[index];
               return ChangeNotifierProvider.value(
                 value: data,
-                child: FavoriteCard(index),
+                child: GestureDetector(
+                    onTap: () {
+                      getInstance<NavigationService>()
+                          .navigateTo(detailRoute, arguments: index);
+                    },
+                    child: FavoriteCard(index)),
               );
             },
           );

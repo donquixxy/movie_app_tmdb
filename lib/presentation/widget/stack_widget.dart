@@ -33,16 +33,17 @@ class StackWidget extends StatelessWidget {
                     imageUrl: posterPath + itemProvider.backdrop_path,
                     fit: BoxFit.fill,
                     height: heightScreen * 0.5,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(
-                      strokeWidth: 2,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
                     ),
                   ),
                 ),
               ),
               Container(
                 padding: const EdgeInsets.all(18),
-                height: heightScreen * 0.33,
+                height: heightScreen * 0.4,
                 width: double.infinity,
                 margin: EdgeInsets.only(top: heightScreen * 0.30),
                 child: Card(
@@ -93,8 +94,8 @@ class StackWidget extends StatelessWidget {
                         ],
                       ),
                       //SPACING ANTAR BUTTON DAN TITLE
-                      const SizedBox(
-                        height: 40,
+                      SizedBox(
+                        height: heightScreen * 0.09,
                       ),
                       //END OF CONTENT
                       Row(
@@ -137,10 +138,10 @@ class StackWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: widthScreen * 0.10,
-                bottom: heightScreen * 0.1,
+                left: widthScreen * 0.1,
+                top: heightScreen * 0.31,
                 child: CachedNetworkImage(
-                    height: 200,
+                    height: heightScreen * 0.27,
                     imageUrl: posterPath + itemProvider.poster_path,
                     fit: BoxFit.cover,
                     placeholder: (context, url) =>

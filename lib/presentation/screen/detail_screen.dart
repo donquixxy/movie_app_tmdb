@@ -4,13 +4,13 @@ import 'package:movie_app_tmdb/view_model/result_provider.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
-  final int idArguments;
-  const DetailScreen(this.idArguments);
+  final int index;
+  const DetailScreen(this.index);
 
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<ResultProvider>(context, listen: false)
-        .getDataById(idArguments);
+        .getDataByIndex(index);
     return Scaffold(
       body: ChangeNotifierProvider.value(
         value: data,
