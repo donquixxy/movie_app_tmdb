@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:movie_app_tmdb/models/movie_models.dart';
-import 'package:movie_app_tmdb/models/result_object.dart';
 
 class ApiProvider {
   final Dio _dio = Dio();
@@ -65,7 +64,7 @@ class ApiProvider {
       MovieModels movieModels = MovieModels.fromJson(response.data);
       print(response.realUri);
       return movieModels;
-    } on DioError catch (e) {
+    } on DioError {
       throw Exception('Failed to Get Data');
     } on SocketException catch (error) {
       throw error.toString();

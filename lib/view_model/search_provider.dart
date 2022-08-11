@@ -6,7 +6,7 @@ import 'package:movie_app_tmdb/models/result_object.dart';
 class SearchProviderResults extends ChangeNotifier {
   final ApiProvider _apiProvider = ApiProvider();
 
-  List<Results> _searchResults = [];
+  final List<Results> _searchResults = [];
 
   List<Results> get searchResultsData => _searchResults;
   MovieModels? _searchMovieModels;

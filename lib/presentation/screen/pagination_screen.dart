@@ -33,13 +33,13 @@ class _PaginationScreenState extends State<PaginationScreen> {
                 itemCount: itemProvider.listData.length,
                 itemBuilder: (BuildContext context, int index) {
                   var data = itemProvider.listData[index];
-                  print(itemProvider.listData.length);
+                  // print(itemProvider.listData.length);
                   return ChangeNotifierProvider.value(
                     value: data,
                     child: GestureDetector(
                         onTap: () {
                           getInstance<NavigationService>()
-                              .navigateTo(detailRoute, arguments: index);
+                              .navigateTo(detailRoute, arguments: data);
                         },
                         child: FavoriteCard(index)),
                   );

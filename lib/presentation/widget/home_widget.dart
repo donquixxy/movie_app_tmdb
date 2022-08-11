@@ -14,44 +14,43 @@ class HomeWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
+        physics: BouncingScrollPhysics(),
         children: [
           Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Popular Movie ',
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      getInstance<NavigationService>()
-                          .navigateTo(paginationRoute);
-                    },
-                    child: const Text("See all"),
-                  )
-                ],
-              )),
-          SizedBox(
-            height: height * 0.41,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: itemProvider.listData.take(5).length,
-              itemBuilder: (BuildContext context, int index) {
-                final data = itemProvider.listData[index];
-                return ChangeNotifierProvider.value(
-                  value: data,
-                  child: CardWidget(index),
-                );
-              },
+            padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Popular Movie ',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                TextButton(
+                  onPressed: () {
+                    getInstance<NavigationService>()
+                        .navigateTo(paginationRoute);
+                  },
+                  child: const Text("See all"),
+                )
+              ],
             ),
+          ),
+          GridView.builder(
+            physics: BouncingScrollPhysics(),
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, mainAxisExtent: height * 0.42),
+            itemCount: itemProvider.listData.take(12).length,
+            itemBuilder: (context, index) {
+              final data = itemProvider.listData[index];
+              return ChangeNotifierProvider.value(
+                value: data,
+                child: CardWidget(index),
+              );
+            },
           ),
         ],
       ),
