@@ -18,15 +18,15 @@ class ResultsAdapter extends TypeAdapter<Results> {
     };
     return Results(
       adult: fields[0] as bool,
-      backdrop_path: fields[1] as String,
+      backdrop_path: fields[1] as String?,
       genre_ids: (fields[2] as List).cast<int>(),
       id: fields[3] as int,
       original_language: fields[4] as String,
       original_title: fields[5] as String,
       overview: fields[6] as String,
       popularity: fields[7] as double,
-      poster_path: fields[8] as String,
-      release_date: fields[9] as String,
+      poster_path: fields[8] as String?,
+      release_date: fields[9] as String?,
       title: fields[10] as String,
       video: fields[11] as bool,
       vote_average: fields[12] as double,
@@ -85,7 +85,7 @@ class ResultsAdapter extends TypeAdapter<Results> {
 
 Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
       adult: json['adult'] as bool,
-      backdrop_path: json['backdrop_path'] as String,
+      backdrop_path: json['backdrop_path'] as String?,
       genre_ids:
           (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
       id: json['id'] as int,
@@ -93,8 +93,8 @@ Results _$ResultsFromJson(Map<String, dynamic> json) => Results(
       original_title: json['original_title'] as String,
       overview: json['overview'] as String,
       popularity: (json['popularity'] as num).toDouble(),
-      poster_path: json['poster_path'] as String,
-      release_date: json['release_date'] as String,
+      poster_path: json['poster_path'] as String?,
+      release_date: json['release_date'] as String?,
       title: json['title'] as String,
       video: json['video'] as bool,
       vote_average: (json['vote_average'] as num).toDouble(),

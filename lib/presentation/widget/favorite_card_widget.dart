@@ -28,9 +28,10 @@ class FavoriteCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: CachedNetworkImage(
-                    imageUrl: posterPath + itemProvider.poster_path,
-                    fit: BoxFit.cover,
-                    height: screenHeight * 0.18,
+                    imageUrl: itemProvider.poster_path!.isNotEmpty
+                        ? posterPath + itemProvider.poster_path!
+                        : noPosterUrl,
+                    fit: BoxFit.fitHeight,
                     placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator.adaptive(),
                     ),

@@ -14,25 +14,29 @@ class FavoriteScreen extends StatelessWidget {
     final favoriteProvider = Provider.of<FavoriteProvider>(context);
 
     return ValueListenableBuilder(
-        valueListenable: favoriteProvider.fetchDataFromDb,
-        builder: (BuildContext context, Box<Results> box, widget) {
-          return ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.all(12),
-            itemCount: box.values.length,
-            itemBuilder: (BuildContext context, int index) {
-              var data = box.values.toList()[index];
-              return ChangeNotifierProvider.value(
-                value: data,
-                child: GestureDetector(
-                    onTap: () {
-                      getInstance<NavigationService>()
-                          .navigateTo(detailRoute, arguments: index);
-                    },
-                    child: FavoriteCard(index)),
-              );
-            },
-          );
-        });
+      valueListenable: favoriteProvider.fetchDataFromDb,
+      builder: (BuildContext context, Box<Results> box, widget) {
+        return ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(12),
+          itemCount: box.values.length,
+          itemBuilder: (BuildContext context, int index) {
+            var data = box.values.toList()[index];
+            return ChangeNotifierProvider.value(
+              value: data,
+              child: GestureDetector(
+                  onLongPress: () {
+                    favoriteProvider.removeDataFromHive(index);
+                  },
+                  onTap: () {
+                    getInstance<NavigationService>()
+                        .navigateTo(detailRoute, arguments: data);
+                  },
+                  child: FavoriteCard(index)),
+            );
+          },
+        );
+      },
+    );
   }
 }

@@ -13,7 +13,7 @@ class Results extends Equatable with ChangeNotifier {
   final bool adult;
 
   @HiveField(1)
-  final String backdrop_path;
+  final String? backdrop_path;
 
   @HiveField(2)
   final List<int> genre_ids;
@@ -34,10 +34,10 @@ class Results extends Equatable with ChangeNotifier {
   final double popularity;
 
   @HiveField(8)
-  final String poster_path;
+  final String? poster_path;
 
   @HiveField(9)
-  final String release_date;
+  final String? release_date;
 
   @HiveField(10)
   final String title;

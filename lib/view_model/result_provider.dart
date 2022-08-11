@@ -12,6 +12,7 @@ class ResultProvider extends ChangeNotifier {
   final List<Results> _listResults = [];
 
   List<Results> get listData => _listResults;
+
   int pagePagination = 1;
 
   Future<void> fetchAllMovie() async {

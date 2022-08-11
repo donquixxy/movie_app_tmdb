@@ -26,12 +26,14 @@ class CardWidget extends StatelessWidget {
             onTap: () {
               // favoriteProvier.compareObject(item);
               getInstance<NavigationService>()
-                  .navigateTo(route.detailRoute, arguments: index);
+                  .navigateTo(route.detailRoute, arguments: item);
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
-                imageUrl: posterPath + item.poster_path,
+                imageUrl: item.poster_path!.isNotEmpty
+                    ? posterPath + item.poster_path!
+                    : noPosterUrl,
                 fit: BoxFit.cover,
                 width: width * 0.4,
                 progressIndicatorBuilder: (context, url, downloadProgress) {

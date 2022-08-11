@@ -19,6 +19,11 @@ class _PaginationScreenState extends State<PaginationScreen> {
     var itemProvider = context.watch<ResultProvider>();
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: const Text("Popular Movie"),
+      ),
       body: SafeArea(
         child: itemProvider.listData.isEmpty
             ? const Center(child: CircularProgressIndicator.adaptive())
@@ -28,6 +33,7 @@ class _PaginationScreenState extends State<PaginationScreen> {
                 itemCount: itemProvider.listData.length,
                 itemBuilder: (BuildContext context, int index) {
                   var data = itemProvider.listData[index];
+                  print(itemProvider.listData.length);
                   return ChangeNotifierProvider.value(
                     value: data,
                     child: GestureDetector(

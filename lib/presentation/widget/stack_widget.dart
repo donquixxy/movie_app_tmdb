@@ -30,9 +30,12 @@ class StackWidget extends StatelessWidget {
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8)),
                   child: CachedNetworkImage(
-                    imageUrl: posterPath + itemProvider.backdrop_path,
+                    imageUrl: itemProvider.backdrop_path!.isNotEmpty
+                        ? posterPath + itemProvider.backdrop_path!
+                        : noPosterUrl,
                     fit: BoxFit.fill,
                     height: heightScreen * 0.5,
+                    width: widthScreen,
                     placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
@@ -43,7 +46,7 @@ class StackWidget extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(18),
-                height: heightScreen * 0.4,
+                height: heightScreen * 0.45,
                 width: double.infinity,
                 margin: EdgeInsets.only(top: heightScreen * 0.30),
                 child: Card(
@@ -84,7 +87,9 @@ class StackWidget extends StatelessWidget {
                             width: widthScreen * 0.4,
                           ),
                           Text(
-                            itemProvider.release_date,
+                            itemProvider.release_date!.isNotEmpty
+                                ? itemProvider.release_date!
+                                : 'Unknown',
                             style: const TextStyle(
                                 fontSize: 15, color: Colors.grey),
                           ),
@@ -95,7 +100,7 @@ class StackWidget extends StatelessWidget {
                       ),
                       //SPACING ANTAR BUTTON DAN TITLE
                       SizedBox(
-                        height: heightScreen * 0.09,
+                        height: heightScreen * 0.01,
                       ),
                       //END OF CONTENT
                       Row(
@@ -113,7 +118,7 @@ class StackWidget extends StatelessWidget {
                                   primary:
                                       const Color.fromARGB(255, 0, 204, 113)),
                               onPressed: () {
-                                favoriteProvier.addToFavoriteBox(itemProvider);
+                                favoriteProvier.addDataToFavorite(itemProvider);
                               },
                               child: Row(
                                 mainAxisAlignment:
@@ -142,7 +147,9 @@ class StackWidget extends StatelessWidget {
                 top: heightScreen * 0.31,
                 child: CachedNetworkImage(
                     height: heightScreen * 0.27,
-                    imageUrl: posterPath + itemProvider.poster_path,
+                    imageUrl: itemProvider.poster_path!.isNotEmpty
+                        ? posterPath + itemProvider.poster_path!
+                        : noPosterUrl,
                     fit: BoxFit.cover,
                     placeholder: (context, url) =>
                         const Center(child: CircularProgressIndicator())),

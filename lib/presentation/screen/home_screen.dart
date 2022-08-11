@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_tmdb/presentation/screen/favorite_screen.dart';
+import 'package:movie_app_tmdb/presentation/screen/search_screen.dart';
 import 'package:movie_app_tmdb/presentation/widget/home_widget.dart';
 import 'package:movie_app_tmdb/view_model/home_screen_provider.dart';
 import 'package:movie_app_tmdb/view_model/result_provider.dart';
@@ -21,21 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: ResultSearchDelegate());
+              },
               icon: const Icon(
                 Icons.search,
                 size: 26,
               ))
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     var box = Hive.box<Results>('favorites');
-      //     box.values.forEach((element) {
-      //       print(element.title);
-      //     });
-      //   },
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         currentIndex: homeProvider.currentIndex,
