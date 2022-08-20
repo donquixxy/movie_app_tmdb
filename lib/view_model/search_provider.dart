@@ -14,14 +14,18 @@ class SearchProviderResults extends ChangeNotifier {
   MovieModels? get movieModelsSearch => _searchMovieModels;
 
   Future<MovieModels?> searchWithQuery(String query) async {
-    var results = await _apiProvider.searchWithQuery(query);
-    _searchMovieModels = results;
-    for (var data in _searchMovieModels!.results) {
-      if (_searchResults.isEmpty) {
-        _searchResults.add(data);
+    try {
+      var results = await _apiProvider.searchWithQuery(query);
+      _searchMovieModels = results;
+      for (var data in _searchMovieModels!.results) {
+        if (_searchResults.isEmpty) {
+          _searchResults.add(data);
+        }
       }
+      notifyListeners();
+      return _searchMovieModels;
+    } catch (e) {
+      return null;
     }
-    notifyListeners();
-    return _searchMovieModels;
   }
 }

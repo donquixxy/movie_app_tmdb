@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -62,12 +63,10 @@ class ApiProvider {
       }
 
       MovieModels movieModels = MovieModels.fromJson(response.data);
-      print(response.realUri);
+      log(response.realUri.toString());
       return movieModels;
-    } on DioError {
-      throw Exception('Failed to Get Data');
-    } on SocketException catch (error) {
-      throw error.toString();
+    } catch (error) {
+      return null;
     }
   }
 }

@@ -14,7 +14,7 @@ class HomeWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
@@ -39,7 +39,7 @@ class HomeWidget extends StatelessWidget {
             ),
           ),
           GridView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisExtent: height * 0.42),

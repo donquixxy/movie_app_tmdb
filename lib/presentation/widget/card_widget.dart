@@ -17,7 +17,7 @@ class CardWidget extends StatelessWidget {
     var item = Provider.of<Results>(context, listen: false);
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(15, 10, 12, 3),
+      padding: const EdgeInsets.fromLTRB(15, 10, 12, 3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

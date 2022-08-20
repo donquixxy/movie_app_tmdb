@@ -30,9 +30,13 @@ class StackWidget extends StatelessWidget {
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8)),
                   child: CachedNetworkImage(
-                    imageUrl: itemProvider.backdrop_path!.isNotEmpty
-                        ? posterPath + itemProvider.backdrop_path!
-                        : noPosterUrl,
+                    imageUrl: itemProvider.backdrop_path == null
+                        ? noPosterUrl
+                        : posterPath + itemProvider.backdrop_path!
+                    // itemProvider.backdrop_path!.isEmpty
+                    //     ? posterPath + itemProvider.backdrop_path!
+                    //     : noPosterUrl,
+                    ,
                     fit: BoxFit.fill,
                     height: heightScreen * 0.5,
                     width: widthScreen,
