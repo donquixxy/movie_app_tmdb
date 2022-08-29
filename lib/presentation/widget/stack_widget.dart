@@ -69,7 +69,7 @@ class StackWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           SizedBox(
-                            width: widthScreen * 0.4,
+                            width: widthScreen * 0.48,
                           ),
                           Flexible(
                             fit: FlexFit.tight,
@@ -88,7 +88,7 @@ class StackWidget extends StatelessWidget {
                       Row(
                         children: [
                           SizedBox(
-                            width: widthScreen * 0.4,
+                            width: widthScreen * 0.48,
                           ),
                           Text(
                             itemProvider.release_date!.isNotEmpty
